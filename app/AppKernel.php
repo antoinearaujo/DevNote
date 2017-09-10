@@ -19,9 +19,6 @@ class AppKernel extends Kernel
             new UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new HomeBundle\HomeBundle(),
-            new ContactBundle\ContactBundle(),
-            new HoraireBundle\HoraireBundle(),
-            new CarteBundle\CarteBundle(),
             new AdminBundle\AdminBundle(),
         );
 

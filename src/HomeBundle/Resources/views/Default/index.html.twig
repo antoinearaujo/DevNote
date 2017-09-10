@@ -6,66 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-  <big style="float:center;">
-    <h1 style="text-align: center; font-family: cursive;">
-      <nav id="nav-main" style="background-color: #41051F">
-        <p style ="color: #FFFFFF;">Mes Services</p>
-      </nav>
-    </h1>
-      <div style="text-align:center;">
-        <a href={{path('carte')}}>
-          <img src="{{asset('images/BarberShop-2.png')}}" class="img-circle" alt="BarberShop" width="400" height="400" style="">
-         </a>
-         <a href={{path('carte')}}>
-           <img src="{{asset('images/protheses.jpg')}}" class="img-circle" alt="BarberShop" width="400" height="400" style="">
-         </a>
-         <a href={{path('carte')}}>
-           <img src="{{asset('images/photo.jpg')}}" class="img-circle" alt="BarberShop" width="400" height="400" style="">
-         </a>
-         
-         <h2 style="text-align: left;">
-         <a href="#" class="myButton"><strong>BARBER SHOP</strong></a>
-          
-         </h2>
-         <h2 style="text-align: center;">
-          <a href="#" class="myButton"><strong>PROTHESES CAPILLAIRE</strong></a>        
 
-         </h2>
-         <h2 style="text-align: right;">
-           <a href="#" class="myButton"><strong>LISSAGE BRESILIEN</strong></a>
-         </h2>
-      </div>
-      <h1 style="text-align: center; font-family: cursive;">
-        <nav id="nav-main" style="background-color: #41051F">
-          <p style ="color: #FFFFFF;">Actualités</p>
-
-            {% for sheet in sheets %}
-              <div class="well">
-                <p style="text-align:center;"><strong><h3 class="btn-default">{{sheet.name}}</h3></strong></p>
-                  <img class="img-responsive center-block"
-
-                    src="{{ asset(sheet.image.webPath) }}"
-                    alt="{{ sheet.image.alt }}"
-                 />
-                 <div class="alert col-lg-12 alert-info"><legend style="text-align:center;">
-                   <h4 style="text-align:center;">{{sheet.message}}</h4>
-
-{% if is_granted('ROLE_SUPER_ADMIN') %}
-            <li> <a href="{{ path('admin_delete_article', {'id': sheet.id }) }}">Supprimer</a> </li>
-
-        {%endif%}
-
-                 </div>
-                 </br>
-                 </br>
-              </div>
-            {% endfor %}
-        </nav>
-      </h1>
-      </br></br>
-  </big> 
-
-  <a href="{{ path('fos_user_security_login')}}"><h3>Espace admin</h3></a>
 </body>
 </html>
 

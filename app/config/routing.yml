@@ -2,18 +2,6 @@ admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
     prefix:   /
 
-carte:
-    resource: "@CarteBundle/Resources/config/routing.yml"
-    prefix:   /
-
-horaire:
-    resource: "@HoraireBundle/Resources/config/routing.yml"
-    prefix:   /
-
-contact:
-    resource: "@ContactBundle/Resources/config/routing.yml"
-    prefix:   /
-
 home:
     resource: "@HomeBundle/Resources/config/routing.yml"
     prefix:   /

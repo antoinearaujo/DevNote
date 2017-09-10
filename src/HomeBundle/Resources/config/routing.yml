@@ -1,3 +1,6 @@
 home_homepage:
     path:     /
     defaults: { _controller: HomeBundle:Default:index }
+home_notes:
+    path:     /notes
+    defaults: { _controller: HomeBundle:Default:notes }

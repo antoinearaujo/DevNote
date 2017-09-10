@@ -12,20 +12,20 @@
           
        
         </section>
-        <section class="col-sm-9">
+        <section class="col-sm-13">
 
         
 
 
 
 <div class="row">
-        <section class="col-sm-3">
+        <section class="col-sm-2">
       
-
 {{ form_start(form)}}
-{{ form_label(form.Name) }} {{ form_widget(form.Name) }}
-{{ form_rest(form)}}
- 
+ {{ form_widget(form.Name, { 'attr': { 'size' : 40 } }) }}
+
+{{ form_rest(form, { 'attr': { 'size' : 40 } })}}
+
 
 
 

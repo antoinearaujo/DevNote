@@ -15,8 +15,14 @@ class SheetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('message')
+            ->add('Titre',  array(
+           'label' => 'input comment', 
+           'attr' => array('style' => 'width: 200px')
+          ))
+            ->add('Texte', array(
+           'label' => 'input comment', 
+           'attr' => array('style' => 'width: 200px')
+          ))
             ;
     }
     

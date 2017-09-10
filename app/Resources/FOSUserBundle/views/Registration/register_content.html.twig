@@ -1,0 +1,46 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if is_granted ('ROLE_SUPER_ADMIN')%}
+
+<div class="row">
+        <section class="col-sm-3">
+         
+          
+       
+        </section>
+
+        
+        <section class="col-sm-9">
+        
+
+
+
+<div class="row">
+        <section class="col-sm-7">
+
+
+
+
+<div class="row content">
+<div class="col-lg-7">
+
+
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'class':'well'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
+</section>
+</div>
+</div>
+</div>
+   {% else %}
+       <h2 style="text-align: center;">
+           <div class="alert alert-warning">Cette fonction est reservée aux administrateurs. 
+           </div>
+       </h2>
+
+
+{% endif %}

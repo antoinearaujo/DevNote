@@ -4,9 +4,6 @@ imports:
     - { resource: services.yml }
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@HomeBundle/Resources/config/services.yml" }
-    - { resource: "@ContactBundle/Resources/config/services.yml" }
-    - { resource: "@HoraireBundle/Resources/config/services.yml" }
-    - { resource: "@CarteBundle/Resources/config/services.yml" }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -39,7 +36,8 @@ framework:
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:

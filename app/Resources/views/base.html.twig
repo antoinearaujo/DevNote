@@ -42,28 +42,38 @@
     <![endif]-->
 
     </head>
-    <body style="background-image: url('/images/Back.png');">
+    <body style="background-color: #A9F5A9;">
       
        <h1> {% block pageTitle %}{% endblock %}</h1>
 
-  
-<nav id="nav-main" style="background-color: #8A051F">
-<img class="" src="{{asset('images/header.png')}}">
-
-<nav id="nav-main" style="background-color: #8A051F">
+ {% if is_granted('ROLE_ADMIN') %}
+<nav id="nav-main" style="background-color: #01DF3A">
     <ul>
-        <li><a href="{{path('home_homepage')}}">ACCUEIL</a></li>
-        <li><a href="{{path('carte')}}">CARTE</a></li>
-        <li><a href="{{path('horaire')}}">HORAIRES</a></li>
-        <li><a href="{{path('contact')}}">CONTACT</a></li>
-        <li><a href="https://www.facebook.com/EygoAttitude/?fref=ts" ><img src="{{asset('bundles/framework/images/Fbout2.png')}}"> </a></li>
+        <li><a href="{{path('home_notes')}}" ><img src="{{asset('images/dev.png')}}"> </a></li>
+        <li><a href="{{path('admin_article')}}" ><img src="{{asset('images/dev+.png')}}"></a></li>
+        <li><a href="{{path('fos_user_security_logout')}}" ><img src="{{asset('images/compte.png')}}"></a></li>
     </ul>
 </nav>
+
 </nav>
 <div id="nav-trigger">
-    <span>Menu</span>
+    <span>
+        <li><a href="{{path('home_notes')}}" ><img src="{{asset('images/dev.png')}}"> </a></li>
+        <li><a href="{{path('admin_article')}}" ><img src="{{asset('images/dev+.png')}}"> </a></li>
+    
+    </span>
 </div>
-<nav id="nav-mobile"></nav>
+<nav id="nav-mobile">  
+</nav>
+
+{% else %}
+<div class="alert alert-success">
+  <strong><a href="{{path('fos_user_security_login')}}" ><h3 style="text-align: center; font-family: cursive;">CONNEXION</h3> </a></strong>
+</div>
+
+<img class="img-responsive center-block" src="{{asset('images/logo.png')}}">
+{% endif %}
+
         {% block javascripts %}{% endblock %}
 
  {% block body %}
