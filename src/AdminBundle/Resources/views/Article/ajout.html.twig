@@ -4,42 +4,39 @@
 
 {% block body %}
 
-{% if is_granted('ROLE_SUPER_ADMIN') %}
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
 
-<div class="row">
-        <section class="col-sm-3">
-        
-          
-       
+        <div class="row">
+        <section class="col-sm-4">
+
+
         </section>
-        <section class="col-sm-13">
-
-        
-
-
-
-<div class="row">
-        <section class="col-sm-2">
-      
-{{ form_start(form)}}
- {{ form_widget(form.Name, { 'attr': { 'size' : 40 } }) }}
-
-{{ form_rest(form, { 'attr': { 'size' : 40 } })}}
+        <section class="col-sm-1">
 
 
 
 
-</section>
-</div>
+
+        <div class="row">
+            <section class="col-sm-2">
+
+                {{ form_start(form) }}
+                {{ form_widget(form.Name, { 'attr': { 'size' : 40 } }) }}
+
+                {{ form_rest(form, { 'attr': { 'size' : 40 } }) }}
+
+
+            </section>
+        </div>
 
 
 
 
-{% endif %}
+    {% endif %}
 
-{% if not is_granted ('ROLE_SUPER_ADMIN')%}
+    {% if not is_granted ('ROLE_SUPER_ADMIN') %}
 
-<h1>Vous n'êtes pas administrateur</h1>
+        <h1>Vous n'êtes pas administrateur</h1>
 
-{%endif%}
+    {% endif %}
 {% endblock %}
