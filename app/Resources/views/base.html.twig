@@ -42,17 +42,23 @@
     <![endif]-->
 
 </head>
-<body style="background-color: #A9F5A9;">
+<body style="background-color: #5bc0de;">
 
 <h1> {% block pageTitle %}{% endblock %}</h1>
 
 {% if is_granted('ROLE_ADMIN') %}
 
-    <nav id="nav-main" style="background-color: #01DF3A">
+    <nav id="nav-main" style="background-color: #0088CC ">
         <ul>
             <li><a href="{{ path('home_notes') }}"><img src="{{ asset('images/dev.png') }}"> </a></li>
             <li><a href="{{ path('admin_article') }}"><img src="{{ asset('images/dev+.png') }}"></a></li>
             <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('images/logout.jpg') }}"> </a></li>
+            {% if app.user %}
+                <div class="alert alert-success alert-dismissable close">
+                    <strong>Bienvenue, </strong>{{ app.user }}
+                </div>
+            {% else %}
+            {% endif %}
 
         </ul>
     </nav>
@@ -68,12 +74,7 @@
     </div>
     <nav id="nav-mobile">
     </nav>
-    {% if app.user %}
-        <div class="alert alert-success alert-dismissable close">
-            <strong>Bienvenue, </strong>{{ app.user }}
-        </div>
-    {% else %}
-    {% endif %}
+
 {% else %}
     <div class="alert alert-success">
         <strong>

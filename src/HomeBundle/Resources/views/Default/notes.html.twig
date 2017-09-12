@@ -3,43 +3,103 @@
 
 {% block body %}
     {% if is_granted('ROLE_ADMIN') %}
+
         <!DOCTYPE html>
         <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <style>
+                /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+                .row.content {
+                    height: 1500px
+                }
+
+                /* Set gray background color and 100% height */
+                .sidenav {
+                    background-color: #f1f1f1;
+                    height: 100%;
+                }
+
+                /* Set black background color, white text and some padding */
+                footer {
+                    background-color: #555;
+                    color: white;
+                    padding: 15px;
+                }
+
+                /* On small screens, set height to 'auto' for sidenav and grid */
+                @media screen and (max-width: 767px) {
+                    .sidenav {
+                        height: auto;
+                        padding: 15px;
+                    }
+
+                    .row.content {
+                        height: auto;
+                    }
+                }
+            </style>
+        </head>
         <body>
-        <h1 style="text-align: center; font-family: cursive;">
-            <h1 style="text-align:center; font-family: Cursive;" class="bg-success"> MES NOTES </h1>
-            {% for sheet in sheets %}
 
-                <strong>
-                    <div class="alert alert-success">
-                        {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            <a href="{{ path('admin_delete_article', {'id': sheet.id }) }}">
-                                <button type="button" class="btn btn-danger">Supprimer</button>
-                            </a>
-                        {% endif %}
-                        <h3 style="text-align: center;">{{ sheet.name }}</h3>
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-3 sidenav">
+                    <h4>DevNote Panel</h4>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="{{ path('home_notes') }}">Notes</a></li>
+                        <li><a href="{{ path('admin_article') }}">Ajouter une note</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
+                    </ul>
+                    <br>
 
-                </strong>
-                <img class="img-responsive center-block"
-                     src="{{ asset(sheet.image.webPath) }}"
-                     alt="{{ sheet.image.alt }}"
-                />
-                <div class="alert col-lg-12">
-                    <legend style="text-align:center;">
-                        <h2 style="text-align:center; color: #01DF3A; ">{{ sheet.titre1 }}</h2></br>
-                        <h4 style="text-align:center;">{{ sheet.etape1|nl2br }}</h4></br>
-                        <h2 style="text-align:center; color: #01DF3A">{{ sheet.titre2 }}</h2></br>
-                        <h4 style="text-align:center;">{{ sheet.etape2|nl2br }}</h4></br>
-                        <h2 style="text-align:center; color: #01DF3A">{{ sheet.titre3 }}</h2></br>
-                        <h4 style="text-align:center;">{{ sheet.etape3|nl2br }}</h4></br>
                 </div>
-                </br>
-                </br>
-            {% endfor %}
-        </h1>
-        </big>
-        <a href="{{ path('fos_user_security_login') }}"><h3>Espace admin</h3></a>
+
+                <div class="col-sm-9">
+                    <h1 style="text-align:center; font-family: Cursive;" class="bg-success"> MES NOTES </h1>
+                    {% for sheet in sheets %}
+
+                        <div class="alert alert-success">
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <a href="{{ path('admin_delete_article', {'id': sheet.id }) }}">
+                                    <button type="button" class="btn btn-danger">Supprimer</button>
+                                </a>
+                            {% endif %}
+                            <h2 style="text-align: center;text-transform: uppercase;color: #122b40">{{ sheet.name }}</h2>
+
+                            <img class="img-responsive center-block"
+                                 src="{{ asset(sheet.image.webPath) }}"
+                                 alt="{{ sheet.image.alt }}"
+                            />
+                            <legend style="text-align:center;">
+                                <h2 style="text-align:center; color: #0000F0; ">{{ sheet.titre1 }}</h2></br>
+                                <h4 style="text-align:center;">{{ sheet.etape1|nl2br }}</h4></br>
+                                <h2 style="text-align:center; color: #0000F0">{{ sheet.titre2 }}</h2></br>
+                                <h4 style="text-align:center;">{{ sheet.etape2|nl2br }}</h4></br>
+                                <h2 style="text-align:center; color: #0000F0">{{ sheet.titre3 }}</h2></br>
+                                <h4 style="text-align:center;">{{ sheet.etape3|nl2br }}</h4></br>
+                            </legend>
+                        </div>
+                        </br>
+                        </br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <footer class="container-fluid">
+            <p>DevNote 2017</p>
+        </footer>
+
+
         </body>
         </html>
+
     {% endif %}
 {% endblock %}
